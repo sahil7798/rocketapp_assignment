@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
-import 'package:rocketapp_assignment/app_exceptions/app_exceptions.dart';
+import 'package:rocketapp_assignment/services/app_exceptions.dart';
 import 'package:rocketapp_assignment/services/base_api.dart';
 
 class NetworkApiService extends BaseApiServices {
@@ -19,10 +19,10 @@ class NetworkApiService extends BaseApiServices {
           await http.get(Uri.parse(url)).timeout(Duration(seconds: 20));
       responseJson = returnResponse(response);
     } on SocketException {
-      throw FetchDataException('No Internet Connection');
+      throw FetchDataException('No Internet Connection ');
     }
     if (kDebugMode) {
-      //print("apap $responseJson");
+      print("$responseJson");
     }
 
     return responseJson;
